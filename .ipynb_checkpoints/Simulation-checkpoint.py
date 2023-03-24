@@ -75,7 +75,7 @@ def main(args):
                           eig_parity = wvg_parity,
                           eig_match_freq=True)]
     # define geomtry
-    geometry = build_geometry(a_axis, b_axis, core_rad, sx, sy, sz, n=ref_index, dn=dn, number_of_ellipses=N)
+    geometry = build_geometry(a_axis, b_axis, core_rad, sy, sy, sz, n=ref_index, dn=dn, number_of_ellipses=N)
     # computational cell size
     cell_size = mp.Vector3(sx+2*PML,sy+2*PML,sz+PML)
 
@@ -106,12 +106,11 @@ if __name__ == '__main__':
     parser.add_argument('-n', dest='n', type=float, default=1.822, help='Material refractive index')
     parser.add_argument('-dn', dest='dn', type=float, default=-0.004, help='Difference in refractive index between material and laser written part')
     parser.add_argument('-t', dest='time', type=float, default=10, help='Simulation time')
-    parser.add_argument('-iD', dest='core', type=float, default=8, help='Core radius')
+    parser.add_argument('-c', dest='core', type=float, default=8, help='Core radius')
     parser.add_argument('-N', dest='N', type=int, default=18, help='Number of ellipses')
     parser.add_argument('-a', dest='a', type=float, default=1, help='Semi-minor axis of laser-printed ellipses')
     parser.add_argument('-b', dest='b', type=float, default=4, help='Semi-major axis of laser printed ellipses')
-    
-    
+    parser.add_argument('-res', dest='res', type=int, default=20, help='Number of ellipses')
     parser.add_argument("-name", dest="name", default="YAG",type=str, help="File name prefix for saved files")
     
     
